@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HighScore</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ecf5ff, #dceeff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .scores {
+      width: 320px;
+      animation: fadeUp 0.9s ease forwards;
+      text-align: center;
+    }
+
+    .scored {
+      margin-bottom: 30px;
+    }
+
+    .score {
+      border: 2px solid #56a5eb;
+      color: #56a5eb;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      background: transparent;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .score:hover {
+      transform: translateY(-4px);
+      background: #56a5eb;
+      color: white;
+      box-shadow: 0 10px 22px rgba(86, 165, 235, 0.35);
+    }
+
+    .back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px auto 0;
+      width: 14rem;
+      height: 3rem;
+      text-decoration: none;
+      color: #56a5eb;
+      border: 2px solid #56a5eb;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .back::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #56a5eb;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+
+    .back:hover::before {
+      transform: scaleX(1);
+    }
+
+    .back:hover {
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(86, 165, 235, 0.35);
+    }
+
+    .back:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(86, 165, 235, 0.25);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scores" id="scores">
+    <div class="scored" id="score"></div>
+    <a href="Quick_Quiz.html" class="back">Go Home</a>
+  </div>
+
+  <script>
+    let socres = document.getElementById("score")
+
+    let arr = JSON.parse(localStorage.getItem("scores"))
+
+    arr.forEach(person => {
+      let s = document.createElement("div")
+      s.textContent = person.name + "-" + person.score
+      s.classList.add("score")
+
+      socres.appendChild(s)
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Quiz</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ecf5ff, #dceeff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .inc {
+      text-align: center;
+    }
+
+    .head h1 {
+      font-size: 5rem;
+      color: #56a5eb;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 10px rgba(86, 165, 235, 0.3);
+    }
+
+    .play,
+    .score {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14rem;
+      height: 3.2rem;
+      margin: 20px auto;
+      text-decoration: none;
+      color: #56a5eb;
+      border: 2px solid #56a5eb;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button glow layer */
+    .play::before,
+    .score::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #56a5eb;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+
+    .play:hover::before,
+    .score:hover::before {
+      transform: scaleX(1);
+    }
+
+    .play:hover,
+    .score:hover {
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(86, 165, 235, 0.35);
+    }
+
+    .play:active,
+    .score:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(86, 165, 235, 0.25);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="inc">
+      <div class="head">
+        <h1>Quick Quiz</h1>
+      </div>
+
+      <a href="Game.html" class="play">Play</a>
+      <a href="HS.html" class="score">High Scores</a>
+    </div>
+  </div>
+</body>
+</html>
